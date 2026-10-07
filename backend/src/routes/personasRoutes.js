@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { createPersona, deletePersona, getPersona, listPersonas, updatePersona } from '../controllers/personasController.js';
+import { validatePersona } from '../middleware/validatePersona.js';
+const router = Router();
+router.get('/', listPersonas);
+router.get('/:id', getPersona);
+router.post('/', validatePersona, createPersona);
+router.put('/:id', validatePersona, updatePersona);
+router.delete('/:id', deletePersona);
+export default router;
